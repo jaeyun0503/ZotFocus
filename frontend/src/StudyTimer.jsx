@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 
-const StudyTimer = () => {
+function StudyTimer() {
   // State to store the user input and countdown time
   const [studyTime, setStudyTime] = useState(0);
   const [countdown, setCountdown] = useState(0);
@@ -42,6 +42,13 @@ const StudyTimer = () => {
     setCountdown(0);
   };
 
+  // Function to format seconds into (minutes: seconds) format
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
+
   // Cleanup the interval when the component unmounts
   useEffect(() => {
     return () => {
@@ -61,9 +68,9 @@ const StudyTimer = () => {
       <button onClick={startTimer}>Start</button>
       <button onClick={stopTimer}>Stop</button>
       <br />
-      <p>Countdown: {countdown} seconds</p>
+      <p>Countdown: {formatTime(countdown)}</p>
     </div>
   );
-};
+}
 
 export default StudyTimer;
