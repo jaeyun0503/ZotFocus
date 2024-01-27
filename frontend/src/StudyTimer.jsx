@@ -4,22 +4,36 @@ import React, { useState, useEffect } from "react";
 
 function StudyTimer() {
   // State to store the user input and countdown time
-  const [studyTime, setStudyTime] = useState(0);
+  let studyTime = 0;
+  // const [studyTime, setStudyTime] = useState(0);
+  const[studyHour, setStudyHour] = useState();
+  const[studyMinute, setStudyMinute] = useState();
   const [countdown, setCountdown] = useState(0);
+
 
   // State to manage the timer interval and pause status
   const [timerInterval, setTimerInterval] = useState(null);
   const [isPaused, setIsPaused] = useState(false);
 
   // Function to handle the input change
-  const handleInputChange = (event) => {
-    setStudyTime(parseInt(event.target.value, 10));
+  const handleHourInputChange = (event) => {
+    const inputValue = event.target.value;
+    setStudyHour(inputValue === "" ? 0 : parseInt(inputValue, 10));
+  };
+
+  const handleMinuteInputChange = (event) => {
+    const inputValue = event.target.value;
+    setStudyMinute(inputValue === "" ? 0 : parseInt(inputValue, 10));
   };
 
   // Function to start or resume the countdown timer
   const startTimer = () => {
+    console.log(studyHour);
+    console.log(studyMinute);
+    studyTime = studyHour * 3600 + studyMinute * 60;
+
     if (studyTime > 0 && !timerInterval) {
-      setCountdown(studyTime * 60);
+      setCountdown(studyTime);
       setTimerInterval(setInterval(updateCountdown, 1000));
     } else if (isPaused) {
       setIsPaused(false);
@@ -40,6 +54,7 @@ function StudyTimer() {
     setTimerInterval(null);
     setCountdown(0);
     setIsPaused(false);
+
   };
 
   // Function to update the countdown every second
@@ -75,7 +90,10 @@ function StudyTimer() {
     <div>
       <label>
         Study Time (minutes):
-        <input type="number" value={studyTime} onChange={handleInputChange} />
+        <input type="number" value={studyHour === 0 ? "" : studyHour} onChange={handleHourInputChange} />
+        Hours
+        <input type="number" value={studyMinute === 0 ? "" : studyMinute} onChange={handleMinuteInputChange} />
+        Minutes
       </label>
       <br />
       <button onClick={startTimer}>Start</button>
