@@ -44,9 +44,10 @@ function StudyTimer() {
 
   // Function to format seconds into (minutes: seconds) format
   const formatTime = (timeInSeconds) => {
-    const minutes = Math.floor(timeInSeconds / 60);
+    const hours = Math.floor(timeInSeconds / 3600);
+    const minutes = Math.floor((timeInSeconds % 3600) / 60);
     const seconds = timeInSeconds % 60;
-    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    return `${hours}h${minutes}m${seconds < 10 ? "0" : ""}${seconds}s`;
   };
 
   // Cleanup the interval when the component unmounts
