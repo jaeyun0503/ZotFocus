@@ -23,8 +23,8 @@ def index():
             api_data = response.json()
 
             # Return the API data as JSON
-            location = api_data['Records'][0]['City']
-            return location
+            # location = api_data['Records'][0]['City'] + ", " + api_data['Records'][0]['Region'] + ", " + api_data['Records'][0]['CountryAbbreviation']
+            return jsonify(api_data)
         else:
             # If the request was not successful, return an error message
             return jsonify({'error': 'Failed to fetch data from the API'}), response.status_code
