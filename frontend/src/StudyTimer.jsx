@@ -6,10 +6,9 @@ function StudyTimer() {
   // State to store the user input and countdown time
   let studyTime = 0;
   // const [studyTime, setStudyTime] = useState(0);
-  const[studyHour, setStudyHour] = useState();
-  const[studyMinute, setStudyMinute] = useState();
+  const [studyHour, setStudyHour] = useState();
+  const [studyMinute, setStudyMinute] = useState();
   const [countdown, setCountdown] = useState(0);
-
 
   // State to manage the timer interval and pause status
   const [timerInterval, setTimerInterval] = useState(null);
@@ -54,7 +53,6 @@ function StudyTimer() {
     setTimerInterval(null);
     setCountdown(0);
     setIsPaused(false);
-
   };
 
   // Function to update the countdown every second
@@ -90,9 +88,17 @@ function StudyTimer() {
     <div>
       <label>
         Study Time (minutes):
-        <input type="number" value={studyHour === 0 ? "" : studyHour} onChange={handleHourInputChange} />
+        <input
+          type="number"
+          value={studyHour === 0 ? "" : studyHour}
+          onChange={handleHourInputChange}
+        />
         Hours
-        <input type="number" value={studyMinute === 0 ? "" : studyMinute} onChange={handleMinuteInputChange} />
+        <input
+          type="number"
+          value={studyMinute === 0 ? "" : studyMinute}
+          onChange={handleMinuteInputChange}
+        />
         Minutes
       </label>
       <br />
