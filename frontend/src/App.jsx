@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import StudyTimer from "./StudyTimer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
-import "./App.css";
+import "./App.css"; // Import your stylesheet
 
 function App() {
   const [showStudyTimer, setShowStudyTimer] = useState(false);
@@ -13,11 +13,11 @@ function App() {
 
   return (
     <div className="app-container">
-      <div className="countdown-button">
-        {" "}
+      <div className="spacer"></div>
+      <div className="dropdown-container">
         <button
           onClick={toggleStudyTimer}
-          className={`navbar-button ${showStudyTimer}`}
+          className={`navbar-button ${showStudyTimer ? "active" : ""}`}
         >
           <FontAwesomeIcon icon={faClock} />
         </button>

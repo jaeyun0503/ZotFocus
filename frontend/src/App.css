@@ -1,30 +1,29 @@
 .app-container {
-    position: relative;
-  }
-  
-  .navbar-button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #333; /* Change color as needed */
-  }
-    
-  .study-timer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #f9f9f9; /* Change background color as needed */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    padding: 16px;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  display: flex;
+  align-items: center;
+}
 
-  .countdown-button {
-    display: flex;
-    justify-content: right;
-    margin-right: 20%;
-  }
+.spacer {
+  flex-grow: 1; /* This will push the button to the right */
+}
+
+.navbar-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333; /* Change color as needed */
+}
+
+.study-timer {
+  position: absolute;
+  top: 100%; /* Set to the height of the button */
+  right: 0;
+  background-color: #f9f9f9; /* Change background color as needed */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
